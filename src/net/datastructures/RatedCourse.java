@@ -20,10 +20,10 @@ public class RatedCourse implements Comparable<RatedCourse>{
  	}
 
 	public int compareTo(RatedCourse c) {
-		if (((RatedCourse) c).getRating() > rating) {
+		if (c.getRating() > rating) {
 			return 1;
 		}
- 		else if (((RatedCourse) c).getRating() < rating) {
+ 		else if (c.getRating() < rating) {
  			return -1;
  		} else {
  			return 0;

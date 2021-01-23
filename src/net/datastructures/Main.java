@@ -1,10 +1,11 @@
 package net.datastructures;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.io.IOException; // Import the IOException class to handle errors
-import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.PriorityQueue;
 
 public class Main {
 

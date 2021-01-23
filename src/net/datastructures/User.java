@@ -1,6 +1,7 @@
 package net.datastructures;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -109,15 +110,14 @@ public class User {
 		pq.add(new RatedCourse("CS 3037", 2));
 		pq.add(new RatedCourse("CS 2055", 1));
 		
-		for(RatedCourse c: pq) {
-			classes.add(c.getRating());
+		Object[] array = pq.toArray();
+		
+		Arrays.sort(array);
+	
+		for(int i = 0; i < array.length; i++) {
+			classes.add(((RatedCourse) array[i]).getRating());
 		}
 		
-		/*
-		for(Course c : allCoursesList) {
-			
-		}
-		*/	
 		
 		return classes;
 		
