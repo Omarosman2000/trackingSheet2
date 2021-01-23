@@ -20,9 +20,9 @@ public class Controller {
 	}
 	
 	public static void returnRecommendations(){
-		ArrayList<Integer> courses = person.getRecommendations();
+		ArrayList<String> courses = person.getRecommendations();
 		
-		for(int c : courses) {
+		for(String c : courses) {
 			System.out.print(c + ", ");
 		}
 		

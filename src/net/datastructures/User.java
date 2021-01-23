@@ -78,10 +78,12 @@ public class User {
 	 * gives each of the courses a rating
 	 * @return priority arrayList where most recommended appears first
 	 */
-	public ArrayList<Integer> getRecommendations(){
-		ArrayList<Integer> classes = new ArrayList<Integer>();
+	public ArrayList<String> getRecommendations(){
+		ArrayList<String> classes = new ArrayList<String>();
 		PriorityQueue<RatedCourse> pq = new PriorityQueue<RatedCourse>();
 		
+		
+		// gives ratings for courses
 		for(Course c: allCoursesList) {
 			if(!coursesTaken.contains(c)) {
 				int rating = 0;
@@ -114,6 +116,8 @@ public class User {
 						break;
 					case NONE:
 					default:
+						
+					rating = rating - c.completedPre(coursesTaken);
 				}
 				pq.add(new RatedCourse(c.getCourseKey(), rating));
 			}
@@ -124,7 +128,7 @@ public class User {
 		Arrays.sort(array);
 	
 		for(int i = 0; i < array.length; i++) {
-			classes.add(((RatedCourse) array[i]).getRating());
+			classes.add(((RatedCourse) array[i]).getID());
 		}
 		
 		
