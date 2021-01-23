@@ -86,6 +86,29 @@ public class User {
 					if(c.is4000())
 						rating++;
 				}
+
+				switch(c.getCourseArea()) {
+					case SYSTEMS:
+						if(sys = false){
+							rating++;
+						}
+					case THEORYANDLANG:
+						if(theory = false){
+							rating++;
+						}
+					case DESIGN:
+						if(design = false){
+							rating++;
+						}
+					case SOCIALIMPS:
+						if(imps = false){
+							rating++;
+						}
+					case NONE:
+					default:
+				}
+
+
 				
 				
 				
