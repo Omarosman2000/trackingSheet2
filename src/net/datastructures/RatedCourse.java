@@ -1,7 +1,7 @@
 package net.datastructures;
 
 // class with course ID and its specific rating for a user
-public class RatedCourse implements Comparable{
+public class RatedCourse implements Comparable<RatedCourse>{
 	
 	private String courseKey;
     private int rating;
@@ -19,21 +19,15 @@ public class RatedCourse implements Comparable{
  		return courseKey;
  	}
 
-	public int compareTo(Object obj) {
-		
-		if(obj.getClass().equals(getClass())) {
-			if (((RatedCourse) obj).getRating() > rating) {
-				return 1;
-			}
-	 		else if (((RatedCourse) obj).getRating() < rating) {
-	 			return -1;
-	 		} else {
-	 			return 0;
-	 		}
+	public int compareTo(RatedCourse c) {
+		if (((RatedCourse) c).getRating() > rating) {
+			return 1;
 		}
-		else
-			return -2;
-
+ 		else if (((RatedCourse) c).getRating() < rating) {
+ 			return -1;
+ 		} else {
+ 			return 0;
+ 		}
 	}
 
 }
