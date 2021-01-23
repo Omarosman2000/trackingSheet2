@@ -38,7 +38,7 @@ public class CourseParser {
                     newCourse.addPreReq(newPre);
                 }
             }
-            System.out.println(newCourse.toString());
+           // System.out.println(newCourse.toString());
         }
         return courseGraph;
     }

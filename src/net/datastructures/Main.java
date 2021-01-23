@@ -1,25 +1,30 @@
 package net.datastructures;
 
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException{
     	
     	// Create a Hash of All WPI Courses
     	HashMap<String,Course> courseGraph = CourseParser.parseFile("CScourses.txt");
+    	
+    	User person = new User();
+    	
+    	// Take in User Input
+    	Scanner input = new Scanner(System.in);
+        System.out.println("Enter course ID: ");
+        String courseID = input.nextLine();
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter course name: ");
-        String courseName =input.nextLine();
-        System.out.println(courseName);
-
-            if(courseName == null){
-                System.out.println("Invalid course name! ");
+            if(!courseGraph.containsKey(courseID)){
+                System.out.println("Invalid course name!");
             }
+            
+         
 
 
     }
