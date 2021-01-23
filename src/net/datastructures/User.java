@@ -69,25 +69,6 @@ public class User {
 		
 	}
 	
-	public int getCS() {
-		return numCS;
-	}
-	public int get4000() {
-		return num4000;
-	}
-	public boolean hasSys() {
-		return sys;
-	}
-	public boolean hasTheory() {
-		return theory;
-	}
-	public boolean hasDesign() {
-		return design;
-	}
-	public boolean hasImps() {
-		return imps;
-	}
-	
 	/**
 	 * gives each of the courses a rating
 	 * @return priority arrayList where most recommended appears first
@@ -95,20 +76,21 @@ public class User {
 	public ArrayList<Integer> getRecommendations(){
 		ArrayList<Integer> classes = new ArrayList<Integer>();
 		PriorityQueue<RatedCourse> pq = new PriorityQueue<RatedCourse>();
-
 		
-		pq.add(new RatedCourse("CS 3043", 2));
-		pq.add(new RatedCourse("CS 2043", 2));
-		pq.add(new RatedCourse("CS 1043", 2));
-		pq.add(new RatedCourse("CS 1233", 3));
-		pq.add(new RatedCourse("CS 3030", 3));
-		pq.add(new RatedCourse("CS 2053", 1));
-		pq.add(new RatedCourse("CS 3045", 4));
-		pq.add(new RatedCourse("CS 2045", 2));
-		pq.add(new RatedCourse("CS 1047", 1));
-		pq.add(new RatedCourse("CS 1235", 0));
-		pq.add(new RatedCourse("CS 3037", 2));
-		pq.add(new RatedCourse("CS 2055", 1));
+		for(Course c: allCoursesList) {
+			if(!coursesTaken.contains(c)) {
+				int rating = 0;
+				if(c.isCS()) {
+					rating++;
+					if(c.is4000())
+						rating++;
+				}
+				
+				
+				
+				pq.add(new RatedCourse(c.getCourseKey(), rating));
+			}
+		}
 		
 		Object[] array = pq.toArray();
 		

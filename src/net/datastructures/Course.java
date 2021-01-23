@@ -94,5 +94,15 @@ public class Course {
         }
         return str;
     }
+    
+    public boolean isCS() {
+    	return courseKey.charAt(0) == 'C' && courseKey.charAt(1) == 'S';
+    }
+    public boolean is4000() {
+    	if (courseKey.indexOf(' ') + 1 < courseKey.length())
+    		return courseKey.charAt(courseKey.indexOf(' ') + 1) == '4';
+    	else
+    		return false;
+    }
 
 }
