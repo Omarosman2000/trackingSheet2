@@ -37,6 +37,11 @@ public class CourseData {
     }
 
     public List<Course> printPre(Course course){
-        return course.Pre;
+        if(!this.CoursesTaken.contains(course)){
+            System.out.println("Course was not found");
+            throw new CourseNotFoundException(course);
+        }else {
+            return course.Pre;
+        }
     }
 }
