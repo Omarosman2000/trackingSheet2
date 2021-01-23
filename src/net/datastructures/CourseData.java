@@ -1,3 +1,4 @@
+package net.datastructures;
 import java.util.*;
 
 public class CourseData {
