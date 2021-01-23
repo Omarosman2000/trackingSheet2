@@ -1,3 +1,4 @@
+package net.datastructures;
 public class CourseNotFoundException extends Exception {
     private Course course;
 
