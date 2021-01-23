@@ -3,6 +3,7 @@ import java.util.*;
 public class CourseData {
     List<Course> CoursesTaken= new LinkedList<Course>();
 
+
     public CourseData(List<Course> CoursesTaken){
         this.CoursesTaken=CoursesTaken;
     }
@@ -20,5 +21,17 @@ public class CourseData {
         }else{
             return false;
         }
+    }
+
+    public void processClass(Course course) throws CourseTakenException{
+        if(this.CoursesTaken.contains(course)){
+            throw new CourseTakenException(course);
+        }else {
+            CoursesTaken.add(course);
+        }
+    }
+
+    public List<Course> printPre(Course course){
+        return course.Pre;
     }
 }
