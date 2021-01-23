@@ -1,12 +1,15 @@
 package net.datastructures;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class User {
 	
 	private LinkedList<String> coursesTaken;
 	private HashMap<String, Course> allCourses;
+	private LinkedList<Course> allCoursesList;
 	private int numCS;
 	private int num4000;
 	private boolean sys;
@@ -14,8 +17,9 @@ public class User {
 	private boolean design;
 	private boolean imps;
 
-	public User() {
+	public User(HashMap<String, Course> allCourses, LinkedList<Course> allCoursesList) {
 		coursesTaken = new LinkedList<String>();
+		this.allCourses = allCourses;
 		numCS = 0;
 		num4000 = 0;
 		sys = false;
@@ -82,6 +86,45 @@ public class User {
 	public boolean hasImps() {
 		return imps;
 	}
+	
+	/**
+	 * gives each of the courses a rating
+	 * @return priority arrayList where most recommended appears first
+	 */
+	public ArrayList<Integer> getRecommendations(){
+		ArrayList<Integer> classes = new ArrayList<Integer>();
+		PriorityQueue<RatedCourse> pq = new PriorityQueue<RatedCourse>();
+
+		
+		pq.add(new RatedCourse("CS 3043", 2));
+		pq.add(new RatedCourse("CS 2043", 2));
+		pq.add(new RatedCourse("CS 1043", 2));
+		pq.add(new RatedCourse("CS 1233", 3));
+		pq.add(new RatedCourse("CS 3030", 3));
+		pq.add(new RatedCourse("CS 2053", 1));
+		pq.add(new RatedCourse("CS 3045", 4));
+		pq.add(new RatedCourse("CS 2045", 2));
+		pq.add(new RatedCourse("CS 1047", 1));
+		pq.add(new RatedCourse("CS 1235", 0));
+		pq.add(new RatedCourse("CS 3037", 2));
+		pq.add(new RatedCourse("CS 2055", 1));
+		
+		for(RatedCourse c: pq) {
+			classes.add(c.getRating());
+		}
+		
+		/*
+		for(Course c : allCoursesList) {
+			
+		}
+		*/	
+		
+		return classes;
+		
+	}
+	
+	
+	
 	
 	
 }
