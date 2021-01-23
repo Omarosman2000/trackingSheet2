@@ -63,7 +63,18 @@ public class User {
 		
 		Course cour = allCourses.get(c);
 		
-		if(cour.getCourseArea())
+		switch(cour.getCourseArea()){
+            case SYSTEMS:
+                sys = true;
+            case THEORYANDLANG:
+                theory = true;
+            case DESIGN:
+                design = true;
+            case SOCIALIMPS:
+                imps = true;
+            case NONE:
+            default:
+        }
 		
 	}
 	
