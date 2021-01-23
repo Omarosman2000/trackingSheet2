@@ -43,7 +43,7 @@ public class User {
 		
 		if(c.charAt(0) == 'C' && c.charAt(1) == 'S') {
 			numCS++;
-			if(c.charAt(2) == '4')
+			if(c.charAt(3) == '4')
 				num4000++;
 		}
 		
