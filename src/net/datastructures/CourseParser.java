@@ -19,7 +19,7 @@ public class CourseParser {
                 newCourse.setCourseArea(Integer.parseInt(ids[2]));
             }else{
                 newCourse = new Course(ids[0],ids[1], Integer.parseInt(ids[2])); //create it and put it in the hash map
-                courseGraph.put(newCourse.courseKey, newCourse);
+                courseGraph.put(newCourse.getCourseKey(), newCourse);
             }
             if(lines.length >= 3){
                 String[] courses = lines[2].split("\\*");
@@ -43,7 +43,7 @@ public class CourseParser {
         return courseGraph;
     }
 
-    static void addCourseToPre(List<Course> Pre, String key, HashMap<String,Course> courseGraph){
+    private static void addCourseToPre(List<Course> Pre, String key, HashMap<String,Course> courseGraph){
         if(!courseGraph.containsKey(key)){ 
             Course freshCourse = new Course(key);
             courseGraph.put(key, freshCourse);
