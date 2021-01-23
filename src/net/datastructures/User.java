@@ -58,12 +58,16 @@ public class User {
 		switch(cour.getCourseArea()){
             case SYSTEMS:
                 sys = true;
+                break;
             case THEORYANDLANG:
                 theory = true;
+                break;
             case DESIGN:
                 design = true;
+                break;
             case SOCIALIMPS:
                 imps = true;
+                break;
             case NONE:
             default:
         }
@@ -89,29 +93,28 @@ public class User {
 
 				switch(c.getCourseArea()) {
 					case SYSTEMS:
-						if(sys = false){
+						if(!sys){
 							rating++;
 						}
+						break;
 					case THEORYANDLANG:
-						if(theory = false){
+						if(!theory){
 							rating++;
 						}
+						break;
 					case DESIGN:
-						if(design = false){
+						if(!design){
 							rating++;
 						}
+						break;
 					case SOCIALIMPS:
-						if(imps = false){
+						if(!imps){
 							rating++;
 						}
+						break;
 					case NONE:
 					default:
 				}
-
-
-				
-				
-				
 				pq.add(new RatedCourse(c.getCourseKey(), rating));
 			}
 		}

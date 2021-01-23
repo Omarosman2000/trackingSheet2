@@ -10,7 +10,7 @@ public class CourseParser {
         Scanner sc = new Scanner(new File(fileName));
         sc.useDelimiter(";");
         while(sc.hasNext()){
-            String[] lines = sc.next().split("\\n");
+            String[] lines = sc.next().split("\\r\\n");
             String[] ids = lines[1].split("\\|");
             Course newCourse;
             if(courseGraph.containsKey(ids[0])){ // if this ID exists
