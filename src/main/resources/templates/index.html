@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPI Interactive CS Tracking Sheet</title>
+</head>
+<body>
+    <h1>WPI Interactive CS Tracking Sheet</h1> 
+    <h3>Enter the CS courses you have completed below:</h3>
+   
+    <input type = "text" id = "myText" value = "CS ####">
+    <button onclick="myFunction()">Click me</button>
+
+    <script>
+        function myFunction() {
+            var myClass = Java.type("com.example.demo.TrackingsheetApplication");
+            var name = myClass.test();
+            console.log(name);
+        }
+    //to get the html format generated, press "!" and then tab
+    //good practice is to put the javascript inside of the body
+    //to open the webpage, right-click on the index.html server and click "open with live server"
+    //h1 denotes the header/title that appearso on the webpage
+    
+    /*var x = 11;
+    var y = 15;
+    var width = 1500;
+    var height = 100;
+
+    var canvas = document.createElement('canvas'); //create a canvas element - the canvas element needs to be drawn onto, and the canvas element has to be appeneded to the body
+    //set canvas width/height
+    canvas.style.height = '100%'; 
+    canvas.style.width = '100%';
+
+    //set canvas DRAWING area:
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    //Canvas positioning:
+    canvas.style.position = 'absolute'; //canvas position cannot change
+    canvas.style.left = 50;
+    canvas.style.top = 100;
+    canvas.style.zIndex = 100000;
+    canvas.style.pointerEvents = 'none'; //no pointer events/interaction with the mouse allowed for the graphic
+
+    document.body.appendChild(canvas); //add drawing canvas to body of website
+
+    //Draw rectangle(s):
+
+    var context = canvas.getContext('2d'); //set a variable that holds the type of drawing for this particular canvas, as well as the drawing area needed to be filled.
+    context.rect(x,y,width,height); //1st rectangle
+    context.fillStyle = 'red'; //color of the rectangle
+    context.fill(); //draws the rectangle onto the canvas
+    // fill() method of the Canvas 2D API fills the current or given path with the current fillStyle*/
+
+    </script>
+</body>
+</html>
