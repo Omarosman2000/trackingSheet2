@@ -6,6 +6,7 @@ import java.util.List;
 public class Course {
     String courseKey;
     String courseName;
+    CourseArea area;
     List<Course> Pre= new LinkedList<>();
     //List<Course> Post= new LinkedList<>();
 
@@ -14,10 +15,29 @@ public class Course {
         this.courseKey=courseKey;
         this.courseName=courseName;
     }
-    public Course(String courseKey, String courseName, List<Course> Pre){
+    public Course(String courseKey, String courseName, List<Course> Pre, int area){
         this.courseKey=courseKey;
         this.courseName=courseName;
         this.Pre=Pre;
+        switch(area){
+            case(0):
+                this.area= CourseArea.NONE;
+                break;
+            case(1):
+                this.area= CourseArea.SYSTEMS;
+                break;
+            case(2):
+                this.area= CourseArea.THEORYANDLANG;
+                break;
+            case(3):
+                this.area= CourseArea.DESIGN;
+                break;
+            case(4):
+                this.area= CourseArea.SOCIALIMPS;
+                break;
+            default:
+                this.area= CourseArea.NONE;
+        }
         //this.Post=Post;
     }
 
