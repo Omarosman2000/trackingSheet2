@@ -4,20 +4,23 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Course {
-    String courseKey;
-    String courseName;
-    CourseArea area;
-    List<List<Course>> Pre= new LinkedList<>();
+    static protected LinkedList<Course> allCourses = new LinkedList<>() ;
+    private String courseKey;
+    private String courseName;
+    private CourseArea area;
+    private List<List<Course>> Pre= new LinkedList<>();
     //List<Course> Post= new LinkedList<>();
 
 
     public Course(String courseKey){
         this.courseKey=courseKey;
+        allCourses.add(this);
     }
     public Course(String courseKey, String courseName, int area){
         this.courseKey=courseKey;
         this.courseName=courseName;
         setCourseArea(area);
+        allCourses.add(this);
     }
     public Course(String courseKey, String courseName, List<List<Course>> Pre, int area){
         this.courseKey=courseKey;
@@ -62,20 +65,21 @@ public class Course {
     public CourseArea getCourseArea(){
         return area;
     }
-    public boolean completedPre(List<Course> CoursesTaken){//this needs fix because the ors will break it -- nick
-        int sameCourse=0;
-        for(int i=0; i<this.Pre.size()-1;i++){
-            for(int j=0; j<CoursesTaken.size()-1;j++){
-                if(this.Pre.indexOf(i)==CoursesTaken.indexOf(j)) {
-                    sameCourse++;
+    public int completedPre(List<String> CoursesTaken){
+        int missedCourse=0;
+        for (List<Course> courseList : Pre) {
+            boolean match = false;
+            for(Course course : courseList) {
+                for(int i = 0; i < CoursesTaken.size()&&!match; i++){//interates through the ors (or single values for ands)
+                    if(course.getCourseKey().equals(CoursesTaken.get(i))){
+                        match = true;
+                    }
+                    if(match) break; // no need to check the rest of the ors if we already have a match
                 }
+                if(!match) missedCourse++;
             }
         }
-        if(sameCourse==this.Pre.size()-1){
-            return true;
-        }else{
-            return false;
-        }
+        return missedCourse;
     }
     public String toString(){
         String str = courseKey +'|' +courseName +'|'+area+'\n';

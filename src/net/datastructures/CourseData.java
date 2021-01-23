@@ -3,10 +3,6 @@ import java.util.*;
 
 public class CourseData {
     List<Course> CoursesTaken= new LinkedList<Course>();
-    public enum Systems{ CS3013, CS4513, CS4515, CS4516}; // i have some questions about this --nick
-    public enum Theory{ CS3133, CS4120, CS4123, CS4533, CS4536};
-    public enum Design{CS3041, CS3431, CS3733, CS4233};
-    public enum Social_Implications{CS3043, IMGD2000, IMGD2001, GOV2314, ID2314,GOV2315, ID2315};
 
 
     public CourseData(List<Course> CoursesTaken){
