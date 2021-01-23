@@ -7,18 +7,18 @@ public class Course {
     String courseKey;
     String courseName;
     List<Course> Pre= new LinkedList<>();
-    List<Course> Post= new LinkedList<>();
+    //List<Course> Post= new LinkedList<>();
 
 
     public Course(String courseKey, String courseName){
         this.courseKey=courseKey;
         this.courseName=courseName;
     }
-    public Course(String courseKey, String courseName, List<Course> Pre, List<Course> Post){
+    public Course(String courseKey, String courseName, List<Course> Pre){
         this.courseKey=courseKey;
         this.courseName=courseName;
         this.Pre=Pre;
-        this.Post=Post;
+        //this.Post=Post;
     }
 
     public String getCourseName() {
