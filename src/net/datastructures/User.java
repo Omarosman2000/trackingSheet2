@@ -21,6 +21,7 @@ public class User {
 	public User(HashMap<String, Course> allCourses, LinkedList<Course> allCoursesList) {
 		coursesTaken = new LinkedList<String>();
 		this.allCourses = allCourses;
+		this.allCoursesList = allCoursesList;
 		numCS = 0;
 		num4000 = 0;
 		sys = false;
