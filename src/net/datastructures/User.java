@@ -87,49 +87,87 @@ public class User {
 		for(Course c: allCoursesList) {
 			if(!coursesTaken.contains(c)) {
 				int rating = 0;
-				if(c.isCS()) {
+				
+				// num courses weighting
+				if(c.isCS() && numCS < 18) {
 					rating++;
-					if(c.is4000())
-						rating++;
+				}
+						
+				// pre-reqs accounted for weighting
+				rating = rating - c.completedPre(coursesTaken);
+
+				// skill level consideration (increasing ratings)
+				int importance = 0;
+				int skill = (int) Math.round(((double) numCS) / 4) + 1;
+				
+				if (c.isCS()) {
+					switch (skill) {
+					case 1:
+						rating = rating + 2 * c.isType('1') + c.isType('2') - c.isType('3') - 2 * c.isType('4');
+						break;
+					case 2:
+						rating = rating + 2 * c.isType('2') - c.isType('4');
+						break;
+					case 3:
+						rating = rating + 2 * c.isType('3') + c.isType('4') + c.isType('2') - c.isType('1');
+						importance = 1;
+						break;
+					case 4:
+						rating = rating + 2 * c.isType('3') + 2 * c.isType('4') - 2 * c.isType('1');
+						importance = 1;
+						break;
+					case 5:
+						rating = rating + c.isType('3') + 2 * c.isType('4') - 2 * c.isType('1') - c.isType('2');
+						importance = 2;
+						break;
+					case 6:
+						rating = rating + 2 * c.isType('4') - 2 * c.isType('1') - c.isType('2');
+						importance = 3;
+						break;
+					default:
+
+					}
 				}
 
-				switch(c.getCourseArea()) {
-					case SYSTEMS:
-						if(!sys){
-							rating++;
-						}
-						break;
-					case THEORYANDLANG:
-						if(!theory){
-							rating++;
-						}
-						break;
-					case DESIGN:
-						if(!design){
-							rating++;
-						}
-						break;
-					case SOCIALIMPS:
-						if(!imps){
-							rating++;
-						}
-						break;
-					case NONE:
-					default:
-						
-					rating = rating - c.completedPre(coursesTaken);
+				// course type weighting
+				switch (c.getCourseArea()) {
+				case SYSTEMS:
+					if (!sys) {
+						rating = rating + importance;
+					}
+					break;
+				case THEORYANDLANG:
+					if (!theory) {
+						rating = rating + importance;
+					}
+					break;
+				case DESIGN:
+					if (!design) {
+						rating = rating + importance;
+					}
+					break;
+				case SOCIALIMPS:
+					if (!imps) {
+						rating = rating + importance;
+					}
+					break;
+				case NONE:
+				default:
+
 				}
 				pq.add(new RatedCourse(c.getCourseKey(), rating));
 			}
 		}
-		
+
 		Object[] array = pq.toArray();
-		
+
 		Arrays.sort(array);
-	
-		for(int i = 0; i < array.length; i++) {
+
+		for (int i = 0; i < array.length; i++) {
 			classes.add(((RatedCourse) array[i]).getID());
+			System.out.print(((RatedCourse) array[i]).getRating() + ", ");
 		}
+		System.out.println();
 		
 		
 		return classes;

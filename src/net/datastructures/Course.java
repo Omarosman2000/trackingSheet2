@@ -98,11 +98,18 @@ public class Course {
     public boolean isCS() {
     	return courseKey.charAt(0) == 'C' && courseKey.charAt(1) == 'S';
     }
-    public boolean is4000() {
-    	if (courseKey.indexOf(' ') + 1 < courseKey.length())
-    		return courseKey.charAt(courseKey.indexOf(' ') + 1) == '4';
-    	else
-    		return false;
+    
+    /**
+     * returns 0 (false) or 1 (true) if it is a given type ('1', '2', '3', or '4')
+     * @param type '1' '2' '3' '4'
+     * @return 0 or 1 if true
+     */
+    public int isType(char type) {
+    	if (courseKey.indexOf(' ') + 1 < courseKey.length()) {
+    		if(courseKey.charAt(courseKey.indexOf(' ') + 1) == type)
+    			return 1;
+    	}
+    	return 0;
     }
 
 }
