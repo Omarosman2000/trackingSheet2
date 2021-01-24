@@ -7,10 +7,11 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class User {
-	
+
 	private LinkedList<String> coursesTaken;
 	private HashMap<String, Course> allCourses;
 	private LinkedList<Course> allCoursesList;
+	//private GradReqs gr;
 	private int numCS;
 	private int num4000;
 	private boolean sys;
@@ -29,12 +30,14 @@ public class User {
 		design = false;
 		imps = false;
 	}
-	
+
 	public boolean add(String c) {
 		if (allCourses.containsKey(c)) {
-			coursesTaken.add(c);
-			updateReqs(c);
-			return true;
+			if(!coursesTaken.contains(c)) {
+				coursesTaken.add(c);
+				updateReqs(c);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -73,7 +76,27 @@ public class User {
 		case NONE:
 		default:
 		}
-
+		checkDoubleCounting(c);
+	}
+	
+	private void checkDoubleCounting(String c) {
+		if(c == "CS 1101")
+			coursesTaken.add("CS 1102");
+		else if(c == "CS 1102")
+			coursesTaken.add("CS 1101");
+		else if(c == "CS 2102")
+			coursesTaken.add("CS 2103");
+		else if(c == "CS 2103")
+			coursesTaken.add("CS 2102");
+		else if(c == "MA 2610")
+			coursesTaken.add("MA 2611");
+		else if(c == "MA 2611")
+			coursesTaken.add("MA 2610");
+		else if(c == "CS 2301")
+			coursesTaken.add("CS 2303");
+		else if(c == "CS 2303")
+			coursesTaken.add("CS 2301");
+		
 	}
 
 	/**
@@ -157,7 +180,7 @@ public class User {
 				default:
 
 				}
-				pq.add(new RatedCourse(c.getCourseKey() + (c.getCourseKey().length()< 8?"\t\t":"\t")+c.getCourseName(), rating));
+				pq.add(new RatedCourse(c.getCourseKey(), rating));
 			}
 		}
 
@@ -167,9 +190,7 @@ public class User {
 
 		for (int i = 0; i < array.length; i++) {
 			classes.add(((RatedCourse) array[i]).getID());
-			System.out.print(((RatedCourse) array[i]).getRating() + ", ");
 		}
-		System.out.println();
 
 		return classes;
 
@@ -182,4 +203,5 @@ public class User {
 	public GradReqs getReqs() {
 		return new GradReqs(numCS, num4000, sys, theory, design, imps);
 	}
+
 }

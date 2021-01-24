@@ -3,7 +3,6 @@ package com.example.demo;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class UserController {
 	
@@ -12,7 +11,7 @@ public class UserController {
 
 	public static void initialize() throws FileNotFoundException {
 		allCourses = CourseParser.parseFile("CScourses.txt");
-    	person = new User(allCourses, Course.allCourses);
+		newPerson();
 	}
 	
 	public static void newPerson() {
@@ -25,25 +24,21 @@ public class UserController {
 	
 	public static ArrayList<String> returnRecommendations(){
 		ArrayList<String> courses = person.getRecommendations();
-		
-		return courses;
-		
+		ArrayList<String> output = new ArrayList<String>();
+		for(int i = 0; i < 10; i++) {
+			output.add(courses.get(i));
+		}
+		return output;
 	}
 	
 	public static String getRequirements() {
 		GradReqs gr = person.getReqs();
-		int numCS = gr.getCS();
-		int num4000 = gr.get4000();
-		boolean sys = gr.getSys();
-		boolean theory = gr.getTheory();
-		boolean design = gr.getDesign();
-		boolean imps = gr.getImps();
-		String output = "" + numCS + "/18 CS Courses Complete \n\n" 
-						+ num4000 + "/5 4000-Level Courses Complete \n\n" 
-						+ "Systems Req: " + isComplete(sys) + "\n\n"
-						+ "Theory and Language Req: " + isComplete(theory) + "\n\n" 
-						+ "Design Req: " + isComplete(design) + "\n\n"
-						+ "Social Implicatios Req: " + isComplete(imps) + "";
+		String output = "" + gr.getCS() + "/18 CS Courses Complete \n\n" 
+						+ gr.get4000() + "/5 4000-Level Courses Complete \n\n" 
+						+ "Systems Req: " + isComplete(gr.getSys()) + "\n\n"
+						+ "Theory and Language Req: " + isComplete(gr.getTheory()) + "\n\n" 
+						+ "Design Req: " + isComplete(gr.getDesign()) + "\n\n"
+						+ "Social Implicatios Req: " + isComplete(gr.getImps()) + "";
 		
 		return output;
 
@@ -55,10 +50,5 @@ public class UserController {
 		else
 			return "Incomplete";
 	}
-	
-	
-	
-	
-	
 	
 }
