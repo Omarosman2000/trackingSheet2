@@ -33,9 +33,11 @@ public class User {
 
 	public boolean add(String c) {
 		if (allCourses.containsKey(c)) {
-			coursesTaken.add(c);
-			updateReqs(c);
-			return true;
+			if(!coursesTaken.contains(c)) {
+				coursesTaken.add(c);
+				updateReqs(c);
+				return true;
+			}
 		}
 		return false;
 	}
@@ -188,9 +190,7 @@ public class User {
 
 		for (int i = 0; i < array.length; i++) {
 			classes.add(((RatedCourse) array[i]).getID());
-			System.out.print(((RatedCourse) array[i]).getRating() + ", ");
 		}
-		System.out.println();
 
 		return classes;
 
