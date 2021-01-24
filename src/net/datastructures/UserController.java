@@ -11,10 +11,14 @@ public class UserController {
 
 	public static void initialize() throws FileNotFoundException {
 		allCourses = CourseParser.parseFile("CScourses.txt");
-    	person = new User(allCourses, Course.allCourses);
+		newPerson();
 	}
 	
-	public boolean add(String c) {
+	public static void newPerson() {
+		person = new User(allCourses, Course.allCourses);
+	}
+	
+	public static boolean add(String c) {
 		return person.add(c);
 	}
 	
@@ -35,6 +39,9 @@ public class UserController {
 		boolean theory = gr.getTheory();
 		boolean design = gr.getDesign();
 		boolean imps = gr.getImps();
+		System.out.println();
+		
+		System.out.println(numCS + ", " + num4000 + ", " + sys + " " + theory + " " + design + " " + imps);
 
 	}
 	

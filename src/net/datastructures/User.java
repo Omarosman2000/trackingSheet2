@@ -74,7 +74,27 @@ public class User {
 		case NONE:
 		default:
 		}
-
+		checkDoubleCounting(c);
+	}
+	
+	private void checkDoubleCounting(String c) {
+		if(c == "CS 1101")
+			coursesTaken.add("CS 1102");
+		else if(c == "CS 1102")
+			coursesTaken.add("CS 1101");
+		else if(c == "CS 2102")
+			coursesTaken.add("CS 2103");
+		else if(c == "CS 2103")
+			coursesTaken.add("CS 2102");
+		else if(c == "MA 2610")
+			coursesTaken.add("MA 2611");
+		else if(c == "MA 2611")
+			coursesTaken.add("MA 2610");
+		else if(c == "CS 2301")
+			coursesTaken.add("CS 2303");
+		else if(c == "CS 2303")
+			coursesTaken.add("CS 2301");
+		
 	}
 
 	/**
@@ -88,7 +108,7 @@ public class User {
 
 		// gives ratings for courses
 		for (Course c : allCoursesList) {
-			if (!coursesTaken.contains(c)) {
+			if (!(coursesTaken.contains(c.getCourseKey()))) {
 				int rating = 0;
 
 				// num courses weighting
