@@ -18,7 +18,10 @@ public class Hain {
     	UserController.add("CS 3043");
     	UserController.add("CS 2119");
     	UserController.add("CS 2102");
-    	UserController.returnRecommendations();
+    	System.out.println();
+    	for(String s: UserController.returnRecommendations()) {
+    		System.out.print(s + ", ");
+    	}
     	UserController.getRequirements();
 
     }
