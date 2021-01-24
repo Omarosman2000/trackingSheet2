@@ -25,8 +25,8 @@ public class UserController {
 	public static void returnRecommendations(){
 		ArrayList<String> courses = person.getRecommendations();
 		
-		for(String c : courses) {
-			System.out.print(c + ", ");
+		for(int i = 0; i < 10; i++) {
+			System.out.print(courses.get(i) + ", ");
 		}
 		
 	}
@@ -40,9 +40,22 @@ public class UserController {
 		boolean design = gr.getDesign();
 		boolean imps = gr.getImps();
 		System.out.println();
+		String output = "" + numCS + "/18 CS Courses Complete \n" 
+						+ num4000 + "/5 4000-Level Courses Complete \n" 
+						+ "Systems Req: " + isComplete(sys) + "\n"
+						+ "Theory and Language Req: " + isComplete(theory) + "\n" 
+						+ "Design Req: " + isComplete(design) + "\n"
+						+ "Social Implicatios Req: " + isComplete(imps) + "";
 		
-		System.out.println(numCS + ", " + num4000 + ", " + sys + " " + theory + " " + design + " " + imps);
+		System.out.println(output);
 
+	}
+	
+	private static String isComplete(boolean b) {
+		if(b)
+			return "Complete";
+		else
+			return "Incomplete";
 	}
 	
 }
