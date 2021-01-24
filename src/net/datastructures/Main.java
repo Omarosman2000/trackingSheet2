@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+    public static void main(String args[]) throws FileNotFoundException, UnsupportedEncodingException{
 
     	UserController.initialize();
     	UserController.returnRecommendations();
