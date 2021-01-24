@@ -87,7 +87,7 @@ public class User {
 
 		// gives ratings for courses
 		for (Course c : allCoursesList) {
-			if (!coursesTaken.contains(c)) {
+			if (!(coursesTaken.contains(c.getCourseKey()))) {
 				int rating = 0;
 
 				// num courses weighting
