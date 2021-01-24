@@ -19,26 +19,35 @@ public class InputController {
       e.printStackTrace();
     }
   }
-  private ArrayList<String> reccomended = new ArrayList<>();
+  private ArrayList<String> recomended = new ArrayList<>();
   private ArrayList<String> taken = new ArrayList<>();
   @GetMapping("/input")
   public String greetingForm(Model model) {
     model.addAttribute("stringholder", new StringHolder());
-    model.addAttribute("stringholder2", stringFormater(taken));
+    taken.clear();
+    recomended.clear();
+    model.addAttribute("taken", stringFormater(taken));
+    model.addAttribute("recs", stringFormater(recomended));
+    model.addAttribute("grad", new StringHolder());
     return "input";
   }
 
   @PostMapping("/stringholder")
   public String greetingSubmit(@ModelAttribute StringHolder stringholder, Model model) {
     model.addAttribute("stringholder", stringholder);
-    taken.add(stringholder.getValue());
-    model.addAttribute("stringholder2", stringFormater(taken));
+    if(UserController.add(stringholder.getValue())){
+      taken.add(stringholder.getValue());
+      recomended = UserController.returnRecommendations();
+    }
+    model.addAttribute("taken", stringFormater(taken));
+    model.addAttribute("recs", stringFormater(recomended));
+    model.addAttribute("grad", new StringHolder());
     return "input";
   }
   private StringHolder stringFormater(ArrayList<String> strings){
     String result = "";
     for(int i = 0; i < strings.size(); i++){
-      result += "\n"+strings.get(i);
+      result += (i==0?"":"\n")+strings.get(i);
     }
     return new StringHolder(result);
   }

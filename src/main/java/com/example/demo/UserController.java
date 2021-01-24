@@ -15,17 +15,20 @@ public class UserController {
     	person = new User(allCourses, Course.allCourses);
 	}
 	
-	public static void add(String c) {
-		person.add(c);
+	public static boolean add(String c) {
+		return person.add(c);
 	}
 	
-	public static void returnRecommendations(){
+	public static ArrayList<String> returnRecommendations(){
 		ArrayList<String> courses = person.getRecommendations();
+		return courses;
 		
-		for(String c : courses) {
-			System.out.print(c + ", ");
-		}
-		
+	}
+	
+	public static GradReqs getRequirements() {
+		GradReqs gr = person.getReqs();
+		return gr;
+
 	}
 	
 	
