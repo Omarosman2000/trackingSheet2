@@ -80,21 +80,21 @@ public class User {
 	}
 	
 	private void checkDoubleCounting(String c) {
-		if(c == "CS 1101")
+		if(c.equals("CS 1101"))
 			coursesTaken.add("CS 1102");
-		else if(c == "CS 1102")
+		else if(c.equals("CS 1102"))
 			coursesTaken.add("CS 1101");
-		else if(c == "CS 2102")
+		else if(c.equals("CS 2102"))
 			coursesTaken.add("CS 2103");
-		else if(c == "CS 2103")
+		else if(c.equals("CS 2103"))
 			coursesTaken.add("CS 2102");
-		else if(c == "MA 2610")
+		else if(c.equals("CS 2610"))
 			coursesTaken.add("MA 2611");
-		else if(c == "MA 2611")
+		else if(c.equals("CS 2611"))
 			coursesTaken.add("MA 2610");
-		else if(c == "CS 2301")
+		else if(c.equals("CS 2301"))
 			coursesTaken.add("CS 2303");
-		else if(c == "CS 2303")
+		else if(c.equals("CS 2303"))
 			coursesTaken.add("CS 2301");
 		
 	}

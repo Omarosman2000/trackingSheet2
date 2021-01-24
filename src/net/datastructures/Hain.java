@@ -9,7 +9,6 @@ public class Hain {
 
     	UserController.initialize();
     	UserController.add("CS 1102");
-    	System.out.println(UserController.add("CS 1101"));
     	/*UserController.add("MA 1022");
     	UserController.add("CS 2022");
     	UserController.add("MA 1021");
