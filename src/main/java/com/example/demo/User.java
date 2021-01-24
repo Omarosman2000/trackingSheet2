@@ -1,4 +1,4 @@
-package net.datastructures;
+package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 public class User {
-
+	
 	private LinkedList<String> coursesTaken;
 	private HashMap<String, Course> allCourses;
 	private LinkedList<Course> allCoursesList;
@@ -29,77 +29,79 @@ public class User {
 		design = false;
 		imps = false;
 	}
-
-	public void add(String c) {
-		if (allCourses.containsKey(c)) {
+	
+	public boolean add(String c) {
+		if(allCourses.containsKey(c)) {
 			coursesTaken.add(c);
 			updateReqs(c);
+			return true;
 		}
+		return false;
 	}
-
+	
 	public void delete(String c) {
 		coursesTaken.remove(c);
 	}
-
-	public LinkedList<String> returnCourses() {
+	
+	public LinkedList<String> returnCourses(){
 		return coursesTaken;
 	}
-
+	
 	private void updateReqs(String c) {
-
-		if (c.charAt(0) == 'C' && c.charAt(1) == 'S') {
+		
+		if(c.charAt(0) == 'C' && c.charAt(1) == 'S') {
 			numCS++;
-			if (c.charAt(3) == '4')
+			if(c.charAt(3) == '4')
 				num4000++;
 		}
-
+		
 		Course cour = allCourses.get(c);
-
-		switch (cour.getCourseArea()) {
-		case SYSTEMS:
-			sys = true;
-			break;
-		case THEORYANDLANG:
-			theory = true;
-			break;
-		case DESIGN:
-			design = true;
-			break;
-		case SOCIALIMPS:
-			imps = true;
-			break;
-		case NONE:
-		default:
-		}
-
+		
+		switch(cour.getCourseArea()){
+            case SYSTEMS:
+                sys = true;
+                break;
+            case THEORYANDLANG:
+                theory = true;
+                break;
+            case DESIGN:
+                design = true;
+                break;
+            case SOCIALIMPS:
+                imps = true;
+                break;
+            case NONE:
+            default:
+        }
+		
 	}
-
+	
 	/**
 	 * gives each of the courses a rating
-	 * 
 	 * @return priority arrayList where most recommended appears first
 	 */
-	public ArrayList<String> getRecommendations() {
+	public ArrayList<String> getRecommendations(){
 		ArrayList<String> classes = new ArrayList<String>();
 		PriorityQueue<RatedCourse> pq = new PriorityQueue<RatedCourse>();
-
+		
+		
 		// gives ratings for courses
-		for (Course c : allCoursesList) {
-			if (!coursesTaken.contains(c)) {
+		for(Course c: allCoursesList) {
+			if(!coursesTaken.contains(c)) {
 				int rating = 0;
-
+				
 				// num courses weighting
-				if (c.isCS() && numCS < 18) {
+				if(c.isCS() && numCS < 18) {
 					rating++;
 				}
-
+						
 				// pre-reqs accounted for weighting
 				rating = rating - c.completedPre(coursesTaken);
 
 				// skill level consideration (increasing ratings)
 				int importance = 0;
 				int skill = (int) Math.round(((double) numCS) / 4) + 1;
-
+				
 				if (c.isCS()) {
 					switch (skill) {
 					case 1:
@@ -168,9 +170,14 @@ public class User {
 			System.out.print(((RatedCourse) array[i]).getRating() + ", ");
 		}
 		System.out.println();
-
+		
+		
 		return classes;
-
+		
 	}
-
+	
+	
+	
+	
+	
 }
