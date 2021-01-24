@@ -11,6 +11,7 @@ public class User {
 	private LinkedList<String> coursesTaken;
 	private HashMap<String, Course> allCourses;
 	private LinkedList<Course> allCoursesList;
+	//private GradReqs gr;
 	private int numCS;
 	private int num4000;
 	private boolean sys;
@@ -30,11 +31,13 @@ public class User {
 		imps = false;
 	}
 
-	public void add(String c) {
+	public boolean add(String c) {
 		if (allCourses.containsKey(c)) {
 			coursesTaken.add(c);
 			updateReqs(c);
+			return true;
 		}
+		return false;
 	}
 
 	public void delete(String c) {
@@ -171,6 +174,14 @@ public class User {
 
 		return classes;
 
+	}
+	
+	/**
+	 * 
+	 * @return a GradReqs object with the completed and uncompleted requirements
+	 */
+	public GradReqs getReqs() {
+		return new GradReqs(numCS, num4000, sys, theory, design, imps);
 	}
 
 }

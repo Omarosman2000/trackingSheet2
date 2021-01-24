@@ -14,8 +14,8 @@ public class UserController {
     	person = new User(allCourses, Course.allCourses);
 	}
 	
-	public static void add(String c) {
-		person.add(c);
+	public boolean add(String c) {
+		return person.add(c);
 	}
 	
 	public static void returnRecommendations(){
@@ -25,6 +25,17 @@ public class UserController {
 			System.out.print(c + ", ");
 		}
 		
+	}
+	
+	public static void getRequirements() {
+		GradReqs gr = person.getReqs();
+		int numCS = gr.getCS();
+		int num4000 = gr.get4000();
+		boolean sys = gr.getSys();
+		boolean theory = gr.getTheory();
+		boolean design = gr.getDesign();
+		boolean imps = gr.getImps();
+
 	}
 	
 }
