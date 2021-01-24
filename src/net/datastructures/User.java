@@ -51,6 +51,7 @@ public class User {
 	}
 
 	private void updateReqs(String c) {
+		checkDoubleCounting(c);
 
 		if (c.charAt(0) == 'C' && c.charAt(1) == 'S') {
 			numCS++;
@@ -76,7 +77,6 @@ public class User {
 		case NONE:
 		default:
 		}
-		checkDoubleCounting(c);
 	}
 	
 	private void checkDoubleCounting(String c) {
