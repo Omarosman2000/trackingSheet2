@@ -25,10 +25,11 @@ public class InputController {
   public String greetingForm(Model model) {
     model.addAttribute("stringholder", new StringHolder());
     taken.clear();
-    recomended.clear();
+    UserController.newPerson();
+    recomended = UserController.returnRecommendations();
     model.addAttribute("taken", stringFormater(taken));
     model.addAttribute("recs", stringFormater(recomended));
-    model.addAttribute("grad", new StringHolder());
+    model.addAttribute("grad", new StringHolder(UserController.getRequirements()));
     return "input";
   }
 
