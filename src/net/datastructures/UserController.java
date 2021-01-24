@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class Controller {
+public class UserController {
 	
 	private static HashMap<String,Course> allCourses;
 	private static User person;
 
 	public static void initialize() throws FileNotFoundException {
 		allCourses = CourseParser.parseFile("CScourses.txt");
-    	person = new User(allCourses, allCourses.get("CS 2011").allCourses);
+    	person = new User(allCourses, Course.allCourses);
 	}
 	
 	public static void add(String c) {
@@ -27,10 +27,5 @@ public class Controller {
 		}
 		
 	}
-	
-	
-	
-	
-	
 	
 }
