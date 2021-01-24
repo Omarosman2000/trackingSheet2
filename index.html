@@ -7,26 +7,28 @@
 </head>
 <body>
     <h1>WPI Interactive CS Tracking Sheet</h1> 
-    <h3>Enter the CS courses you have completed below:</h3>
+    <h3>Enter the CS course you have completed below:</h3>
    
-    <input type = "text" id = "myText" value = "CS courses...">
-    <p>Click </p>
+    <input type = "text" id = "myText" value = "CS course...">
+    <p>Click the "Get Recommended CS Courses" button to see a list of your recommended CS courses</p>
+    <button onclick="getCourses(id)">Get Recommended CS Courses</button>
 
     <script>
+    
+    var canvas = document.createElement('canvas'); //create a canvas element - the canvas element needs to be drawn onto, and the canvas element has to be appeneded to the body
+    setUpCanvas();
+    var context = canvas.getContext('2d'); //set a variable that holds the type of drawing for this particular canvas, as well as the drawing area needed to be filled.
+    drawRectangle(0,50,1100,100,canvas,context,'red');
+
+    function setUpCanvas()
+    {
+    //set canvas width/height
+    canvas.style.height = '100%'; 
+    canvas.style.width = '100%';
     //to get the html format generated, press "!" and then tab
     //good practice is to put the javascript inside of the body
     //to open the webpage, right-click on the index.html server and click "open with live server"
     //h1 denotes the header/title that appearso on the webpage
-    
-    /*var x = 11;
-    var y = 15;
-    var width = 1500;
-    var height = 100;
-
-    var canvas = document.createElement('canvas'); //create a canvas element - the canvas element needs to be drawn onto, and the canvas element has to be appeneded to the body
-    //set canvas width/height
-    canvas.style.height = '100%'; 
-    canvas.style.width = '100%';
 
     //set canvas DRAWING area:
     canvas.width = window.innerWidth;
@@ -38,16 +40,21 @@
     canvas.style.top = 100;
     canvas.style.zIndex = 100000;
     canvas.style.pointerEvents = 'none'; //no pointer events/interaction with the mouse allowed for the graphic
+    }
 
-    document.body.appendChild(canvas); //add drawing canvas to body of website
+    function drawRectangle(x,y,width,height,canvas,context,color)
+    {
+        document.body.appendChild(canvas); //add drawing canvas to body of website
+        context.rect(x,y,width,height); //1st rectangle
+        context.fillStyle = color; //color of the rectangle
+        context.fill(); //draws the rectangle onto the canvas
+        // fill() method of the Canvas 2D API fills the current or given path with the current fillStyle
+    }
 
-    //Draw rectangle(s):
-
-    var context = canvas.getContext('2d'); //set a variable that holds the type of drawing for this particular canvas, as well as the drawing area needed to be filled.
-    context.rect(x,y,width,height); //1st rectangle
-    context.fillStyle = 'red'; //color of the rectangle
-    context.fill(); //draws the rectangle onto the canvas
-    // fill() method of the Canvas 2D API fills the current or given path with the current fillStyle*/
+    function getCourses(id)
+    {
+        return id;
+    }
 
     </script>
 </body>
