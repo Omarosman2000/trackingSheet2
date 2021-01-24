@@ -24,6 +24,7 @@ public class InputController {
   @GetMapping("/input")
   public String greetingForm(Model model) {
     model.addAttribute("stringholder", new StringHolder());
+    model.addAttribute("stringholder2", stringFormater(taken));
     return "input";
   }
 
@@ -37,9 +38,8 @@ public class InputController {
   private StringHolder stringFormater(ArrayList<String> strings){
     String result = "";
     for(int i = 0; i < strings.size(); i++){
-      result += "----------\n"+strings.get(i)+"\t\n";
+      result += "\n"+strings.get(i);
     }
-    result += "----------";
     return new StringHolder(result);
   }
 }

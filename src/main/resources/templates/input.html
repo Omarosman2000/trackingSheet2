@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WPI Interactive CS Tracking Sheet</title>
 </head>
+<style>
+    p{ white-space: pre-wrap;}
+</style>
 <body>
     <h1>WPI Interactive CS Tracking Sheet</h1> 
     <h3>Enter the CS courses you have completed below:</h3>
@@ -19,12 +22,23 @@
             
         </td>
         <td bgcolor = "maroon">
-            <h3>Reccommended Courses</h3>
+            <h3>Recommended Courses</h3>
             
         </td>
         <td bgcolor = "silver">
             <h3>Completion Criteria</h3>
 
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor = "silver">
+            <p th:text="${stringholder2.value}" />
+        </td>
+        <td bgcolor = "maroon">
+            <!--p th:text="${stringholder3.value}" /-->
+        </td>
+        <td bgcolor = "silver">
+            <!--p th:text="${stringholder4.value}" /-->
         </td>
     </tr>
 </table>
