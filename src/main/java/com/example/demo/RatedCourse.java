@@ -1,4 +1,4 @@
-package net.datastructures;
+package com.example.demo;
 
 // class with course ID and its specific rating for a user
 public class RatedCourse implements Comparable<RatedCourse>{

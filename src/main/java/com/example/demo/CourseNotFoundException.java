@@ -1,5 +1,9 @@
-package net.datastructures;
+package com.example.demo;
 public class CourseNotFoundException extends Exception {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     private Course course;
 
     CourseNotFoundException(Course course) {

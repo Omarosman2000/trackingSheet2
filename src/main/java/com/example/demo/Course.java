@@ -1,5 +1,4 @@
-package net.datastructures;
-import java.util.HashMap;
+package com.example.demo;
 import java.util.LinkedList;
 import java.util.List;
 

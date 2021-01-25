@@ -1,9 +1,8 @@
-package net.datastructures;
+package com.example.demo;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class Controller {
 	
@@ -12,7 +11,7 @@ public class Controller {
 
 	public static void initialize() throws FileNotFoundException {
 		allCourses = CourseParser.parseFile("CScourses.txt");
-    	person = new User(allCourses, allCourses.get("CS 2011").allCourses);
+    	person = new User(allCourses, Course.allCourses);
 	}
 	
 	public static void add(String c) {
