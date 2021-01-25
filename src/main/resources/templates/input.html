@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WPI Interactive CS Tracking Sheet</title>
+</head>
+<style>
+    p{ white-space: pre-wrap; padding: 15px;}
+    table td, table td * {
+    vertical-align: top;
+    }
+    h3{padding: 15px;}
+</style>
+<body>
+    <h1>WPI Interactive CS Tracking Sheet</h1> 
+    <h2>Enter the courses you have completed below:</h3>
+    <form action="#" th:action="@{/stringholder}" th:object="${stringholder}" method="post">
+        <p1>Course: <input type="text" th:field="*{value}"  /></p1>
+        <p1><input type="submit" value="Submit" /> </p1>
+    </form>
+    <table width = "100%" border = "0">
+    <tr>
+        <td bgcolor = "silver">
+            <h3>Courses Taken</h3>
+            
+        </td>
+        <td bgcolor = "maroon">
+            <h3>Recommended Courses</h3>
+            
+        </td>
+        <td bgcolor = "silver">
+            <h3>Completion Criteria</h3>
+
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor = "silver">
+            <p th:text="${taken.value}" />
+        </td>
+        <td bgcolor = "maroon">
+            <p th:text="${recs.value}" />
+        </td>
+        <td bgcolor = "silver">
+            <p th:text="${grad.value}" />
+        </td>
+    </tr>
+</table>
+</body>
+</html>
