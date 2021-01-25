@@ -51,6 +51,7 @@ public class User {
 	}
 
 	private void updateReqs(String c) {
+		checkDoubleCounting(c);
 
 		if (c.charAt(0) == 'C' && c.charAt(1) == 'S') {
 			numCS++;
@@ -76,7 +77,6 @@ public class User {
 		case NONE:
 		default:
 		}
-		checkDoubleCounting(c);
 	}
 	
 	private void checkDoubleCounting(String c) {
@@ -88,9 +88,9 @@ public class User {
 			coursesTaken.add("CS 2103");
 		else if(c.equals("CS 2103"))
 			coursesTaken.add("CS 2102");
-		else if(c.equals("MA 2610"))
+		else if(c.equals("CS 2610"))
 			coursesTaken.add("MA 2611");
-		else if(c.equals("MA 2611"))
+		else if(c.equals("CS 2611"))
 			coursesTaken.add("MA 2610");
 		else if(c.equals("CS 2301"))
 			coursesTaken.add("CS 2303");
